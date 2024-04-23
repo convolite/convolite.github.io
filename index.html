@@ -1,187 +1,229 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    <title>ConvoLite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif; /* Set font to Montserrat */
-  }
-
-  .flex {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-  }
-
-  .space-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  
-  .loading {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-    z-index: 9999;
-  }
-
-  .loading.show {
-    opacity: 1;
-  }
-
-  .loading h2 {
-    position: relative;
-    font-size: 48px;
-    color: #FFFFFF;
-    z-index: 1;
-  }
-
-  .loading p {
-    position: relative;
-    font-size: 18px;
-    color: #FFFFFF;
-    margin-top: 20px;
-    z-index: 1;
-  }
-  
-  .loading img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-  }
-
-  .loading-bar {
-    position: relative;
-    width: 80%;
-    height: 20px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    margin-top: 20px;
-    z-index: 1;
-  }
-
-  .loading-bar-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 10px;
-    transition: width 3s ease-in-out;
-  }
-
-  .error-message {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .footer-visible {
-    opacity: 1 !important;
-  }
-
-  .built-with {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .built-with img {
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
-  }
-</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('input').blur(function() {
-      setTimeout(function() {
-        window.scrollTo(0, 0);
-      }, 100); // Add a slight delay to avoid flicker
-    });
-  });
-
-  window.addEventListener('load', function() {
-    var loadingDiv = document.getElementById('loading');
-    loadingDiv.classList.add('show');
-
-    setTimeout(function() {
-      loadingDiv.style.opacity = '0';
-      setTimeout(function() {
-        loadingDiv.style.display = 'none';
-      }, 500);
-    }, 6000);
-
-    setTimeout(function() {
-      document.querySelector('footer').classList.add('footer-visible');
-    }, 2000);
-
-    var loadingBar = document.querySelector('.loading-bar-fill');
-    loadingBar.style.width = '100%';
-
-    // Check if the website is active and scroll down
-    setInterval(function() {
-      var iframe = document.getElementById('myIframe');
-      if (iframe.contentWindow.document.body.scrollHeight > iframe.contentWindow.innerHeight) {
-        iframe.contentWindow.scrollTo(0, iframe.contentWindow.document.body.scrollHeight);
-      }
-    }, 1000);
-  });
-</script>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f2f2f2;
+            overflow: hidden;;
+        }
+        nav a {
+            float: left;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        section {
+            position: relative;
+            text-align: left;
+            color: white;
+        }
+        .content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+            margin-top: auto;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            flex: 1;
+        }
+        .footer-text h2 {
+            flex: 1;
+        }
+        .footer-disclaimer {
+            font-size: 8px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .chat-button {
+            background-color: rgb(65, 208, 255);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            position: fixed;
+            bottom: 13px;
+            right: 20px;
+        }
+        .cookie-consent {
+            position: fixed;
+			bottom: 1px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 9999;
+            display: none;
+        }
+        .cookie-consent button {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
-<main class="flex">
-  <div class="SVELTE_HYDRATER contents" data-target="SpaceIframe" data-props='{"iframeSrc":"https://sites.google.com/view/convolite/overview","runningSdk":"gradio","containerClass":"container","privateSpace":false}'>
-    <iframe id="myIframe" src="https://sites.google.com/view/convolite/overview" aria-label="Space app" class="space-iframe" allow="accelerometer; ambient-light-sensor; 
-        autoplay; battery; camera; clipboard-read; clipboard-write; display-capture; document-domain; encrypted-media; fullscreen; 
-        geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment;
-        picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" 
-        sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox
-        allow-same-origin allow-scripts allow-storage-access-by-user-activation" scrolling="yes" id="iFrameResizer0"></iframe>
-</body>
-</html>
+    <nav>
+        <a href="#">Overview</a>
+        <a href="chat.html">Chat</a>
+        <a href="#">Docs</a>
+    </nav>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="Enhance your writing">
+        <div class="content">
+            <h2>Enhance your writing</h2>
+            <p>Use the creatives of our AI to modify your creations!</p>
+        </div>
+    </section>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="Create stories">
+        <div class="content">
+            <h2>Create stories</h2>
+            <p>Our AI can generate stories that feel genuine.</p>
+        </div>
+    </section>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="Hold long conversations">
+        <div class="content">
+            <h2>Hold long conversations</h2>
+            <p>Our AI can give advice, be a friend, whatever you want.</p>
+        </div>
+    </section>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="No log-in required">
+        <div class="content">
+            <h2>No log-in required!</h2>
+            <p>All conversations are automatically deleted once you refresh the page!</p>
+        </div>
+    </section>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="Context-Rich Conversations">
+        <div class="content">
+            <h2>Context-Rich Conversations</h2>
+            <p>ConvoLite maintains a context window of approximately 32,000 tokens (60 A4 pages)</p>
+        </div>
+    </section>
+    <section>
+        <img src="https://via.placeholder.com/1920x1080" alt="Free and without excessive restrictions">
+        <div class="content">
+            <h2>Free and without excessive restrictions</h2>
+            <p>ConvoLite's basic plan is free and there aren't any hidden charges.</p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text">
+                <h2>Upcoming features:</h2>
+                <p>12 April 2024: We're announcing that to further enhance our user experience, we will soon launch Assistants, a new feature that includes AI characters designed to act as real or fictional characters, engaging in lifelike conversations, they are perfect for role-play. These conversations will be conveniently stored for you to chat with them later. With this addition, you can access personalized, intelligent interactions at your fingertips. We're excited to share this exciting update with you. Keep an eye out for the new Assistants feature and get ready to engage in new ways!</p>
+                <a href="#">Read more ⇒</a>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>Welcome back!</h2>
+                <p>By using any of our services, you you agree to the <a href="Terms of Service.html">Terms of Service</a> and <a href="Privacy Policy.html">Privacy Policy</a>.</p>
+                <a href="convolite.github.com/chat.html" class="chat-button">Chat ➢</a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            Disclaimer! The AI is not very good at coding. The website might be down at times. Please be patient, it's in heavy development at the moment.
+        </div>
+    </footer>
+
+	<div class="cookie-consent">
+		<span>This website uses cookies for a better user experience. By pressing "Got it!</a>", you agree to the <a href="Terms of Service.html">Terms of Service</a> and <a href="Privacy Policy.html">Privacy Policy</a>."</span>
+		<button id="cookie-consent-btn">Got it!</button>
+	</div>
+	
+
+    <script>
+		window.addEventListener('load', function() {
+			const contents = document.querySelectorAll('.content');
+			const sections = document.querySelectorAll('section');
+	
+			sections.forEach((section, index) => {
+				const img = section.querySelector('img');
+				const content = contents[index];
+	
+				const updateContentSize = () => {
+					const imgWidth = img.offsetWidth;
+					const containerWidth = section.offsetWidth;
+					const maxContentWidth = containerWidth - 40; // 20px margin on each side
+	
+					if (imgWidth > maxContentWidth) {
+						content.style.width = `${maxContentWidth}px`;
+					} else {
+						content.style.width = `${imgWidth}px`;
+					}
+				};
+	
+				window.addEventListener('resize', updateContentSize);
+				updateContentSize();
+			});
+	
+			const cookieConsent = document.querySelector('.cookie-consent');
+			const cookieConsentBtn = document.getElementById('cookie-consent-btn');
+	
+			const hasCookieConsented = localStorage.getItem('cookieConsented');
+	
+			if (!hasCookieConsented) {
+				cookieConsent.style.display = 'block';
+			}
+	
+			cookieConsentBtn.addEventListener('click', () => {
+				cookieConsent.style.opacity = '0';
+				setTimeout(() => {
+					cookieConsent.style.display = 'none';
+				}, 500);
+				localStorage.setItem('cookieConsented', true);
+			});
+		});
+	</script>
+	</body>
+	</html>
