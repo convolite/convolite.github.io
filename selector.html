@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ConvoLite - Choose Assistant</title>
+	<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/FzFP1V98/CL3.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background-color: #222;
+			color: #fff;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		main {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+		}
+		.assistant-options {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.assistant-option {
+			background-color: #444;
+			padding: 20px;
+			margin: 10px;
+			border-radius: 10px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			flex-basis: 40%;
+			max-width: 225px;
+		}
+		.assistant-option:hover {
+			background-color: rgb(52, 60, 61);
+			transform: scale(1.1);
+		}
+		.assistant-option h2 {
+			margin-top: 0;
+		}
+		.assistant-option p {
+			margin-bottom: 0;
+		}
+		footer {
+			background-color: #003366;
+			color: rgb(255, 255, 255);
+			padding: 20px;
+			text-align: center;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+		nav {
+			background-color: #f2f2f2;
+			overflow: hidden;
+		}
+		nav a {
+			float: left;
+			color: #333;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		nav a:hover {
+			background-color: #ddd;
+		}
+
+		@media (max-width: 768px) {
+			.assistant-option {
+				flex-basis: 80%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="index.html">Overview</a>
+		<a href="chat.html">Chat</a>
+		<a href="#">Docs</a>
+	</nav>
+	<main>
+		<div class="assistant-options">
+			<div class="assistant-option" onclick="window.location.href='professional.html'">
+				<h2>Professional</h2>
+				<p>The best for every-day tasks.</p>
+			</div>
+			<div class="assistant-option" onclick="window.location.href='conversational.html'">
+				<h2>Conversational</h2>
+				<p>Recommended if you just want to talk to somebody or need advice.</p>
+			</div>
+			
+			<div class="assistant-option" onclick="window.location.href='Can`t access this page yet!.html'">
+				<h2>Assistants</h2>
+				<p>Role-play and story focused. (COMING SOON!)</p>
+			</div>
+
+			<div class="assistant-option" onclick="window.location.href='experimental.html'">
+				<h2>Experimental</h2>
+				<p>May act very weird. We are not responsible for what it does or says.</p>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<a href="Terms of Service.html" class="full-width-button">Read Terms of Service!</a>
+	</footer>
+
+	<script>
+		function detectMobile() {
+			const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+			return isMobile;
+		}
+
+		if (detectMobile()) {
+			// Apply mobile styles
+			const assistantOptions = document.querySelectorAll('.assistant-option');
+			assistantOptions.forEach(option => {
+				option.style.maxWidth = '400px';
+			});
+		}
+	</script>
+</body>
+</html>
