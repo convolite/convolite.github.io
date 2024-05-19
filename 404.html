@@ -1,0 +1,53 @@
+
+<div> <a class="warning" >「 ✦ Sorry, THIS PAGE DOES NOT EXIST! :/ . Please press the link below for a surprize! ⸜(｡˃ ᵕ ˂)⸝♡  ✦ 」</a> </div>
+<div> <a class="flowers">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⢠⠿
+    </a> <a href="#" id="randomLink" class="randomLink" >Read this please!</a> </div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+    body {
+			font-family: 'Montserrat', sans-serif;
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			display: inline-block;
+			flex-direction: row;
+			background-color: #ffffff;
+			color: #000000;
+		}
+        
+    .randomLink{
+        font-size: 200px;
+        position: center;
+        text-align: center;
+        padding-top: 200px;
+    }
+
+    .warning {
+        font-size: 50px;
+    }
+
+    .flowers {
+        font-size: 10px;
+        width: 200px; display: inline-block; white-space: normal;
+    }
+
+
+
+</style>
+<script>
+    var links = [
+        "https://www.bibleref.com/The-Gospel.html",
+        "https://openbible.com/chapter/romans/1.htm",
+        "https://www.bibleref.com/John/1/John-chapter-1.html",
+        "https://youtu.be/A2yV_hFZpa4?si=D8l2aYEvDqTRD-zn&t=22",
+        "https://drive.google.com/file/d/1lsqrTliiSd3edPV5Es5NURNVQx_BGQ8w/view", 
+        "https://www.gotquestions.org/is-Jesus-God.html",
+    ];
+    
+    document.getElementById('randomLink').onclick = function() {
+        var randomIndex = Math.floor(Math.random() * links.length);
+        var randomLink = links[randomIndex];
+        window.location = randomLink;
+    };
+    </script>
