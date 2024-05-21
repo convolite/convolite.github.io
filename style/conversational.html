@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConvoLite - Chat</title>
+	<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/FzFP1V98/CL3.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif; /* Set font to Montserrat */
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .space-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 9999;
+  }
+
+  .loading.show {
+    opacity: 1;
+  }
+
+  .loading h2 {
+    position: relative;
+    font-size: 48px;
+    color: #FFFFFF;
+    z-index: 1;
+  }
+
+  .loading p {
+    position: relative;
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    z-index: 1;
+  }
+  
+  .loading img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .loading-bar {
+    position: relative;
+    width: 80%;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 20px;
+    z-index: 1;
+  }
+
+  .loading-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 3s ease-in-out;
+  }
+
+  .error-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .footer-visible {
+    opacity: 1 !important;
+  }
+
+  .built-with {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .built-with img {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('input').blur(function() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 100); // Add a slight delay to avoid flicker
+    });
+  });
+</script>
+</head>
+<body>
+<main class="flex">
+  <div class="SVELTE_HYDRATER contents" data-target="SpaceIframe" data-props='{"iframeSrc":"https://vericudebuget-conversational-milo.hf.space/?__theme=auto","runningSdk":"gradio","containerClass":"container","privateSpace":false}'>
+    <iframe id="myIframe" src="https://vericudebuget-conversational-milo.hf.space/?__theme=auto" aria-label="Space app" class="space-iframe" allow="accelerometer; ambient-light-sensor; 
+        autoplay; battery; camera; clipboard-read; clipboard-write; display-capture; document-domain; encrypted-media; fullscreen; 
+        geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment;
+        picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" 
+        sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox
+        allow-same-origin allow-scripts allow-storage-access-by-user-activation" scrolling="yes" id="iFrameResizer0"></iframe>
+    <div id="error-message" class="error-message">
+      <h1>WE ARE DOWN!</h1>
+      <p>We are sorry for the inconvenience. Try again later!</p>
+    </div>
+    <div id="loading" class="loading">
+      <img src="https://wallpaperaccess.com/full/2416004.jpg" alt="Loading Image">
+      <h2>LOADING!</h2>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+      <p>Please wait!</p>
+    </div>
+  </div>
+</main>
+<footer class="svelte-mpyp5e" style="background-color: #14203D; color: white; max-height: 30px;">
+  <a href="Terms of Service.html" class="built-with svelte-mpyp5e" target="_blank" rel="noreferrer" style="color: white; font-size: auto;">
+    <img src="https://i.postimg.cc/qq04Yz93/CL3.png" alt="logo" class="svelte-mpyp5e">
+    Remember! We are not responsible for anything the AI says!
+  </a>
+</footer>
+<script>
+  window.addEventListener('load', function() {
+    var loadingDiv = document.getElementById('loading');
+    loadingDiv.classList.add('show');
+
+    setTimeout(function() {
+      loadingDiv.style.opacity = '0';
+      setTimeout(function() {
+        loadingDiv.style.display = 'none';
+      }, 500);
+    }, 6000);
+
+    setTimeout(function() {
+      document.querySelector('footer').classList.add('footer-visible');
+    }, 2000);
+
+    var loadingBar = document.querySelector('.loading-bar-fill');
+    loadingBar.style.width = '100%';
+  });
+</script>
+</body>
+</html>
