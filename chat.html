@@ -198,5 +198,29 @@
     loadingBar.style.width = '100%';
   });
 </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-MKRXXLJQ6D');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3525044209528622"
+  crossorigin="anonymous"></script>
+
+  <script>
+    function isMobile() {
+        const mobileDevices = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'IEMobile', 'Kindle', 'Silk', 'Nokia', 'Opera Mini', 'Windows Phone', 'smartphones', 'maemo', 'samsung', 'galaxy', 'nintendo switch', 'lg', 'sharp'];
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        return mobileDevices.some((device) => ua.includes(device));
+    }
+  
+    // Additional check for screen width
+    if (isMobile() && window.innerWidth <= window.innerHeight && window.location.pathname !== "/conversational-mobile.html") {
+        window.location.href = "conversational-mobile.html";
+    };
+  </script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+
+<html>
+<head>
+<script>
+  function isDesktop() {
+      const ua = navigator.userAgent;
+      const desktopBrowsers = ['Windows', 'Linux', 'Macintosh', 'Chrome', 'Firefox', 'Safari', 'Edge', 'Opera'];
+      return desktopBrowsers.some((browser) => ua.includes(browser));
+  }
+
+  // Additional check for screen width
+  if (window.innerWidth > window.innerHeight) {
+      window.location.href = "professional.html";
+  };
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKRXXLJQ6D');
+</script>
+
+</head>
+</html>
