@@ -14,6 +14,7 @@
 			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
+			width: 100%;
 		}
 		header {
 			background-color: #333;
@@ -24,7 +25,16 @@
 		main {
 			padding: 20px;
 			flex: 1;
+			}
+
+			@media screen and (min-width: 900px){
+			 main {
+			padding: 20px;
+			flex: 1;
+			width: 80%;
+			}
 		}
+	
 		footer {
 			background-color: #003366;
 			color: #fff;
@@ -62,6 +72,7 @@
 			position: relative;
 			text-align: left;
 			color: white;
+			max-width: 100%;
 		}
 		.content {
 			position: absolute;
@@ -89,9 +100,9 @@
 		<h3>Changes to Terms</h3>
 		<p>ConvoLite reserves the right to modify or replace these terms at any time. Your continued use of the service after any such changes constitutes your acceptance of the new terms.</p>
 		<h3>Service Description</h3>
-		<p>ConvoLite provides a conversational AI experience as a free ChatGPT alternative. Our services include high-volume text generation, language processing, and other AI-driven functionalities.</p>
+		<p>ConvoLite provides a conversational AI experience. Our services include high-volume text generation, language processing, and other AI-driven functionalities.</p>
 		<h3>User Responsibilities</h3>
-		<p>Compliance: You agree to comply with all local laws regarding online conduct and acceptable content.
+		<a>Compliance: You agree to comply with all local laws regarding online conduct and acceptable content.
 
             Content: You are responsible for all data, text, information, and other materials that you submit to ConvoLite.
             
@@ -123,7 +134,7 @@
             
             To provide medical advice or medical results interpretation that is intended to be a substitute for professional medical advice, diagnosis, or treatment; and
             
-            For fully automated decision-making in administration of justice, law enforcement, immigration, or asylum processes.</p>
+            For fully automated decision-making in administration of justice, law enforcement, immigration, or asylum processes.</>
 		<h3>Intellectual Property</h3>
 		<p>Ownership: All intellectual property rights in the services provided by ConvoLite, including but not limited to its software, trademarks, and content, are owned by ConvoLite.
 
