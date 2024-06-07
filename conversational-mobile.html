@@ -157,6 +157,36 @@ font-size: 10px;
 
 
 }
+
+nav { 
+        background-color: #f2f2f2;
+        overflow: hidden;
+        z-index: 9999;
+      }
+      
+      nav a {
+        float: left;
+        color: #333;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      nav a:hover {
+        background-color: #ddd;
+      }
+      section {
+        position: relative;
+        text-align: left;
+        color: white;}
+  
+        nav.hidden {
+    opacity: 0;
+  }
+  
+  /* Final state of the navbar after animation */
+  nav.fade-in {
+    animation: fadeIn 2s forwards;
+  }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

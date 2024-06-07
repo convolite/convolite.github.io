@@ -24,6 +24,9 @@
 			text-align: center;
 		}
 		main {
+			animation: fadeIn 2s forwards;
+
+			
 			flex: 1;
 			display: flex;
 			flex-direction: column;
@@ -31,6 +34,15 @@
 			align-items: center;
 			padding: 20px;
 		}
+
+		@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
 		.assistant-options {
 			display: flex;
 			flex-wrap: wrap;
