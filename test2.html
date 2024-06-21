@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Form Submission</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 5px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Form Submission</h1>
+    <form id="apiForm">
+        <input type="number" name="id" placeholder="ID" required>
+        <input type="text" name="ip-address" placeholder="IP Address" required>
+        <input type="text" name="image-link" placeholder="Image Link" required>
+        <input type="date" name="date-upload" value="<?php echo date("Y-m-d"); ?>" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#apiForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = {};
+                $(this).serializeArray().forEach(function(item) {
+                    formData[item.name] = item.value;
+                });
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://feedback-c152.restdb.io/rest/image-list",
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": "667532e8be0bc8f662eaf42b",
+                        "cache-control": "no-cache"
+                    },
+                    "processData": false,
+                    "data": JSON.stringify(formData)
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    displayResults(response);
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error:', textStatus, errorThrown);
+                    $('#results').html('An error occurred. Please try again.');
+                });
+            });
+
+            function displayResults(data) {
+                var resultsDiv = $('#results');
+                resultsDiv.html('<h2>API Response:</h2>');
+                
+                var pre = $('<pre>').text(JSON.stringify(data, null, 2));
+                resultsDiv.append(pre);
+            }
+        });
+    </script>
+</body>
+</html>
