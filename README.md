@@ -28,4 +28,4 @@ ConvoLite maintains a context window of approximately 24,000 words.  (32,000 tok
 
 
 
-If you want to contribute to the project, you are free to do so. For contact, here is my email nora.nakawa@gmail.com
+If you want to contribute to the project, you are free to do so. For contact, here is my email aisongs.v.d.b@gmail.com
