@@ -240,7 +240,7 @@ th, td{
 
 
 
-
+<div class="chat-area">
 <div class="space">‎ </div>
   <div id="chat-container">
     <div id="chat-log"> <div class="reminder">Please remember that the chat will be saved locally!</div><hr style='border: none; height: 3px; background-color: white; width: 99%; margin-top: 20px; margin-bottom: 20px;'>
@@ -266,7 +266,7 @@ th, td{
       <button class="send-btn" id="send-btn">Send</button>
     </div>
 
-  <div class="buttons">
+  
     
 
    
@@ -275,16 +275,191 @@ th, td{
     
   
 </div>
+</div>   
+</div>
+</div>
+  <div class="side-panel"> 
+    <style> .side-panel { 
+      
+      position: fixed; 
+      top: 40px; 
+      left: 20px; 
 
-<div class="desktop">
+
+    }
+
+    @media screen and (max-width: 1660px) {
+
+      .side-panel { 
       
+      position: fixed; 
+      top: 40px; 
+      left: 20px; 
+      display: none;
+
+
+    }
       
-</div>
-  
-  
-</div>
+    }
+
+
+
+    </style>
+    <div class="rewards">
+      <div>
+        <h1>Rank</h1>
+        <hr class="level-bar-background" style="background-color: color: #000; width: 100%; height: 10px; left: 0; margin-left: 1px; border-width: 2px;">
+        <hr class="level-bar" style="background-color: color: #333; width: 20%; height: 10px; left: 0; margin-left: 1px; position: relative; z-index: -1; margin-top:-20px;">
+        <p>The more you chat, the higher rank you will get.</p>
+        <p><i><b>If you have a higher rank, you will get responses quicker.</b></i></p>
+        <style>
+          .level-bar {
+            background-color: #00ffbf;
+            transition: width 1s ease-in-out;
+          }
+        </style>
+      </div>
+    </div>
+
+    <div class="tips"> 
+      <h1>Tips</h1>
+      <ul>
+        <li>Always use <b>English</b> for better results.</li>
+        <li>If you are creating a table and the AI writes it as a list, say <b><i>Without /n at the end!</i></b></li>
+        <li>Press the button <b>Clear Chat</b> if you switch models!</li> 
+        <button class="send-btn" id="send-btn" style="margin-left: 1px; margin-top: 10px;" onclick="copyCommandToClipboard ('Without /n at the end!')">Copy command</button>
+        <script>
+          function copyCommandToClipboard(command) {
+            var textarea = document.createElement('textarea');
+            textarea.value = command;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            document.getElementById('user-input').value += command;
+          }
+        </script>
+
+
+      </ul>
+    </div>
   </div>
+
+</div>
+<style>
+  .side-panel{
+
+    max-width: 400px;
+  }
+
+  
+
+  .menu-btn {
+  transform: scale(1);
+  margin-left: auto;
+  margin-right: 0;
+  top: 0px;
+  position: fixed;
+  display: none;
+  transition: all 0.3s ease;
+  background-color: #002B0D;
+  color: #ffffff;
+  
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+
+.menu-btn:hover::after {
+  
+  padding-left: 0px;
+  margin-left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav{ z-index: +9999;}
+</style>
+
+
+<script>
+  var hasEntered = localStorage.getItem('hasEntered');
+  if (hasEntered !== 'yes') {
+    localStorage.setItem('hasEntered', 'yes');
+    window.location.href = 'ad-page.html';
+  }
+
+    
+  
+</script>
+
+
+<button id="menu-btn" class="menu-btn" onclick="toggleSidePanel()">Menu</button>
+<script>
+  var adRefillDate = localStorage.getItem('adRefill');
+  if (adRefillDate) {
+    var currentDate = new Date();
+    var adRefillDateObj = new Date(adRefillDate);
+    var oneHourAgo = new Date(currentDate.getTime() - (60 * 60 * 1000));
+    if (adRefillDateObj < oneHourAgo) {
+      localStorage.removeItem('adRefill');
+      window.location.href = 'ads-page-conversational.html';
+    }
+  }
+</script>
+<script>
+  function checkDevTools() {
+      try {
+          console.profile('MyProfile'); // Start profiling
+          console.profileEnd(); // End the profile
+
+          // Check if the profile was created (DevTools are open)
+          if (console.profiles && console.profiles.length > 0) {
+              window.location.href = 'do-not-debug.html'; // Redirect
+          }
+      } catch (error) {
+          // Handle any errors (e.g., if console.profile is not supported)
+          console.error('Error checking DevTools:', error);
+      }
+  }
+
+  // Call the function when the page loads
+  window.addEventListener('load', checkDevTools);
+</script>
+<script>
+  function toggleSidePanel() {
+    var sidePanel = document.querySelector('.side-panel');
+    sidePanel.style.display = sidePanel.style.display === 'none' ? 'block' : 'none';
+    if (sidePanel.style.display === 'block' && window.innerWidth < 1667) {
+      document.querySelector('.chat-area').style.transition = 'filter 0.3s ease';
+      document.querySelector('.chat-area').style.filter = 'blur(8px)';
+      document.querySelector('.chat-area').style.webkitFilter = 'blur(8px)';
+    } else {
+      document.querySelector('.chat-area').style.transition = 'filter 0.3s ease';
+      document.querySelector('.chat-area').style.filter = 'blur(0)';
+      document.querySelector('.chat-area').style.webkitFilter = 'blur(0)';
+    }
+  }
+</script>
+
+
+<script>
+  window.addEventListener('scroll', () => {
+    const button = document.getElementById('menu-btn');
+    button.style.display = window.scrollY > 60 ? 'flex' : 'none';
+  });
+</script>
+  
+  
+</div></div>
+
  <script>
+
   const apiUrl = "https://api.groq.com/openai/v1/chat/completions";
   const apiKey = "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"
 
@@ -305,34 +480,47 @@ let conversationLog = [
     //
     // Throws:
     // - If there is an error with the API request, it will be caught and logged.
-const sendMessage = async (message) => {
-  conversationLog.push({ role: "user", content: message });
+    
+    
+function sendMessage(message) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      conversationLog.push({ role: "user", content: message });
+      resolve();
+    }, aiDelay * 2);
+  }).then(() => {
+    const requestBody = {
+      messages: conversationLog,
+      model: "llama3-70b-8192",
+    };
 
-  const requestBody = {
-    messages: conversationLog,
-    model: "llama3-70b-8192",
-  };
-
-  const response = await fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestBody),
-  });
-
-  const data = await response.json();
-  const botResponse = data.choices[0].message.content;
-  conversationLog.push({ role: "assistant", content: botResponse });
-  return botResponse;
-
-
-  response.catch(error => {
+    return fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+      
+    });
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    const botResponse = data.choices[0].message.content;
+    conversationLog.push({ role: "assistant", content: botResponse });
+    return botResponse;
+    localStorage.setItem("messageCount", (Number(localStorage.getItem("messageCount")) || 0) + 1);
+  }).catch((error) => {
     window.location.href = 'conversational-old.html';
   });
+}
+localStorage.setItem("messageCount", (Number(localStorage.getItem("messageCount")) || 0) + 3);
+    document.querySelector('.level-bar').style.width = `${Math.min(100, localStorage.getItem("messageCount"))}%`;
+    
+    console.log("rank-negative:", aiDelay = 20 * ( 100 - document.querySelector('.level-bar').style.width.replace('%', ''))); // milliseconds
 
-};
+
+
 
 
 
@@ -738,6 +926,8 @@ function clearChatLogAndRefresh() {
     location.reload();
   }, 500);
 }
+
+
 
 
 
