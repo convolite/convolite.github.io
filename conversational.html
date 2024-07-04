@@ -454,6 +454,7 @@ nav{ z-index: +9999;}
     button.style.display = window.scrollY > 60 ? 'flex' : 'none';
   });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
   
 </div></div>
@@ -461,7 +462,23 @@ nav{ z-index: +9999;}
  <script>
 
   const apiUrl = "https://api.groq.com/openai/v1/chat/completions";
-  const apiKey = "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"
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://feedback-c152.restdb.io/rest/apikey",
+  "method": "GET",
+  "headers": {
+    "content-type": "application/json",
+    "x-apikey": "667532e8be0bc8f662eaf42b",
+    "cache-control": "no-cache"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  const apiKey = response[0].apiKey;
+}).fail(function(jqXHR, textStatus, errorThrown) {
+  console.error('Error:', textStatus, errorThrown);
+});
 
 
   
