@@ -24,46 +24,44 @@
 			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-		}
-		header {
-			background-color: #333;
+			background-color: #222;
 			color: #fff;
+			text-align: left;
+			justify-content: center;
+		}
+		header, main {
+			
+			align-items: left;
 			padding: 20px;
-			text-align: center;
 		}
 		main {
-			padding: 20px;
 			flex: 1;
+			animation: fadeIn 2s forwards;
 		}
-		@media screen and (min-width: 1000px){
-			 main {
-			padding: 20px;
-			flex: 1;
-			width: 80%;
-			padding-right: 20%;
-			padding-left: 10%;
+
+		@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
 			}
-		}
+		
+		
+		
+		a{
+			color: rgb(138, 255, 220);}
+			
 		footer {
-			background-color: #003366;
-			color: #fff;
+			background-color: rgb(0, 51, 44);
+			color: rgb(255, 255, 255);
 			padding: 20px;
 			text-align: center;
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
 		}
-		.full-width-button {
-			display: block;
-			width: auto%;
-			padding: 10px;
-			background-color: #4CAF50;
-			color: white;
-			text-align: center;
-			text-decoration: none;
-			font-size: 16px;
-            border-radius: 10px;
-		}
-        nav {
+		nav {
 			background-color: #f2f2f2;
 			overflow: hidden;
 		}
@@ -73,25 +71,123 @@
 			text-align: center;
 			padding: 14px 16px;
 			text-decoration: none;
+		
 		}
 		nav a:hover {
 			background-color: #ddd;
 		}
-		section {
-			position: relative;
-			text-align: left;
-			color: white;
+
+		@media (max-width: 768px) {
+			.assistant-option {
+				flex-basis: 80%;
+			}
 		}
-		.content {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-			padding: 20px;
-			background-color: rgba(0, 0, 0, 0.5);
-			max-width: 100%;
-			box-sizing: border-box;
-        }
+
+
+		.assistant-option {
+			background-color: #444;
+			padding: 10px;
+			margin: 10px;
+			min-width: 200px;
+			min-height: 100px;
+			border-radius: 10px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			flex-basis: 40%;
+			max-width: 225px;
+			
+			
+		}
+		.assistant-option:hover {
+			background-color: rgb(52, 60, 61);
+			transform: scale(1.1);
+		}
+		.assistant-option h2 {
+			margin-top: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.assistant-option p {
+			margin-bottom: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.selector {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			border-width: 2px;
+			border-color: #ddd;
+			border-radius: 10px;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: thin;
+			&::-webkit-scrollbar {
+				
+			}
+		}
+		.assistant-option {
+			flex-shrink: 0;
+		}
+
+		.selector1 {
+
+			display: flex;
+			flex-wrap: wrap;
+			overflow-x: auto;
+			}
+
+			.assistant-option1 {
+			background-color: #444;
+			padding: 10px;
+			margin: 10px;
+			min-width: 200px;
+			min-height: 100px;
+			border-radius: 10px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			flex-basis: 40%;
+			max-width: 225px;
+			}
+
+			@media screen and (orientation: portrait) {
+				.assistant-option1 {
+  margin: 5px auto;
+  padding: 2% auto;
+  width: 100px;
+  height: 130px;
+  min-width: 0px;
+}
+}
+			
+			
+		
+		.assistant-option1:hover {
+			background-color: rgb(52, 60, 61);
+			transform: scale(1.1);
+		}
+		.assistant-option1 h2 {
+			margin-top: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.assistant-option1 p {
+			margin-bottom: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+			
+		hr {
+			color: rgb(0, 51, 44);
+		}
 	</style>
+
 </head>
 <body>
     <nav>
@@ -101,9 +197,82 @@
 	</nav>
 	<main>
         <h1>ConvoLite</h1>
-		<h2>Docs:</h2>
-		<p>This is a mixture of announcement, papers, and other stuff.</p>
 
+		<h2>Top most viewed pages</h2>
+
+		<div class="selector">
+
+			
+		
+			<div class="assistant-option" onclick="window.location.href='articles/what-is-the-Gospel.html'">
+				<h2>What is the Gospel?</h2>
+				<p>The message of salvation</p>
+			</div> 
+
+			<div class="assistant-option" onclick="window.location.href='articles/top-videos.html'">
+				<h2>Top videos</h2>
+				<p>High quality content.</p>
+			</div> 
+
+			<div class="assistant-option" onclick="window.location.href='articles/homosexuality.html'">
+				<h2>Homosexuality</h2>
+				<p>What does the Bible have to say?</p>
+			</div> 
+		</div>
+
+		<h2>New articles</h2>
+		<hr>
+		<div class="selector1">
+			
+
+		<div class="assistant-option1" onclick="window.location.href='articles/what-is-the-Gospel.html'">
+					<h2>What is the Gospel?</h2>
+					<p>The message of salvation</p>
+				</div>
+
+		 <div class="assistant-option1" onclick="window.location.href='articles/top-videos.html'">
+			<h2>Top videos</h2>
+			<p>High quality content.</p>
+		</div> 
+
+		<div class="assistant-option1" onclick="window.location.href='articles/can-a-woman-be-a-pastor.html'">
+			<h2>Can woman be pastors?</h2>
+			<p>A question asked mostly by the west.</p>
+		</div> 
+
+		<div class="assistant-option1" onclick="window.location.href='articles/is-abortion-wrong.html'">
+			<h2>Is abortion wrong?</h2>
+			<p>Every human has rights!</p>
+		</div> 
+
+		<div class="assistant-option1" onclick="window.location.href='articles/who-is-the-Holy-Spirit.html'">
+			<h2>Who is the Holy Spirit?</h2>
+			<p>Is He mentioned in the Bible?</p>
+		</div> 
+
+		<div class="assistant-option1" onclick="window.location.href='articles/homosexuality.html'">
+			<h2>Is being gay a sin?</h2>
+			<p>Is it really that bad?</p>
+		</div> 
+
+		<div class="assistant-option1" onclick="window.location.href='articles/is-interacial-marriage-a-sin.html'">
+			<h2>Is interacial marriage a sin?</h2>
+			<p>No. It is not.</p>
+		</div>
+
+		<div class="assistant-option1" onclick="window.location.href='articles/what-is-lust.html'">
+			<h2>What is lust?</h2>
+			<p>And how to break free?</p>
+		</div>
+
+		
+
+		 
+	</div>
+	<a href="articles/all-articles.html">See all articles</a>
+
+		<hr>
+<h1> AI related stuff.</h1>
 		<h3> WE ARE UPGRADING THE HARDWARE!</h1>
 
 			<p>The hardware is going to be upgraded! This means that you will get quicker responses, up to 15x faster! Also, the UI will get improved!</p>
