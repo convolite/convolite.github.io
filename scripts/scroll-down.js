@@ -38,3 +38,12 @@ const scrollToBottom = () => {
   
   
   window.addEventListener('scroll', checkScrollPosition);
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKRXXLJQ6D');
+</script>

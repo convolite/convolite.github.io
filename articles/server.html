@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scrape Web Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function scrapeWebPage(url) {
+      $.ajax({
+        url: url,
+        method: 'GET',
+        success: function(response) {
+          const $ = cheerio.load(response);
+          const pageTitle = $('title').text();
+          const links = $('a').map((index, element) => $(element).attr('href')).get();
+
+          console.log('Page Title:', pageTitle);
+          console.log('Links:', links);
+        },
+        error: function(error) {
+          console.error('Error:', error);
+        }
+      });
+    }
+
+    $(document).ready(function() {
+      const url = 'http://vdb.000.pe/';
+      scrapeWebPage(url);
+    });
+  </script>
+</head>
+<body>
+  <h1>Scrape Web Page</h1>
+  <p>Scraping the web page: <span id="url"></span></p>
+  <p id="result"></p>
+</body>
+</html>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKRXXLJQ6D');
+</script>

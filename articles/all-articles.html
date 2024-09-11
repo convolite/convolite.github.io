@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MKRXXLJQ6D');
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3525044209528622"
-     crossorigin="anonymous"></script>
+	
 	<title>All articles</title>
 	<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/FzFP1V98/CL3.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -331,70 +322,42 @@ h6 {
         <div id="content"></div>
         
         <script>
-            function loadJSON() {
-                return fetch('index.json')
-                    .then(response => response.json())
-                    .catch(error => {
-                        console.error('Error loading JSON:', error);
-                        return [];
-                    });
-            }
-        
-            function displayContent(data) {
-                const contentDiv = document.getElementById('content');
-                if (!contentDiv) {
-                    console.error('Content div not found');
-                    return;
+         document.getElementById('searchButton').addEventListener('click', function() {
+    const searchTerm = document.getElementById('search-bar').value;
+    const url = `https://lite.duckduckgo.com/lite?q=${encodeURIComponent(searchTerm)}`;
+    
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const results = doc.querySelectorAll('table:nth-of-type(2) tr');
+            let output = '<div class="search-results">';
+            
+            results.forEach((result, index) => {
+                const titleElement = result.querySelector('td:nth-child(2) a');
+                const snippetElement = result.querySelector('td.result-snippet');
+                const urlElement = result.querySelector('td span.link-text');
+                
+                if (titleElement && snippetElement && urlElement) {
+                    output += `
+                        <div class="result-item">
+                            <h3 class="result-title">${titleElement.textContent}</h3>
+                            <p class="result-snippet">${snippetElement.textContent}</p>
+                            <a href="${titleElement.href}" class="result-url">${urlElement.textContent}</a>
+                        </div>
+                    `;
                 }
-        
-                contentDiv.innerHTML = ''; // Clear existing content
-        
-                data.forEach(item => {
-                    const titleLink = document.createElement('a');
-                    titleLink.href = item.link;
-                    titleLink.textContent = item.title;
-                    titleLink.className = 'title'; // Add class to the link
-        
-                    const title = document.createElement('o');
-                    title.appendChild(titleLink);
-                    title.className = 'title'; // Add class to the title
-        
-                    const link = document.createElement('a');
-                    link.href = item.link;
-                    link.textContent = item.link;
-                    link.className = 'url'; // Add class to the link
-        
-                    const hr = document.createElement('hr');
-        
-                    contentDiv.appendChild(title);
-                    contentDiv.appendChild(link);
-                    contentDiv.appendChild(hr);
-                });
-            }
-        
-            function filterContent(data, query) {
-                const filteredData = data.filter(item => 
-                    item.title.toLowerCase().includes(query.toLowerCase()) || 
-                    item.link.toLowerCase().includes(query.toLowerCase())
-                );
-                displayContent(filteredData);
-            }
-        
-            document.addEventListener('DOMContentLoaded', function() {
-                loadJSON().then(data => {
-                    displayContent(data);
-        
-                    const searchBar = document.getElementById('search-bar');
-                    searchBar.addEventListener('input', function() {
-                        const query = searchBar.value;
-                        if (query) {
-                            filterContent(data, query);
-                        } else {
-                            displayContent(data);
-                        }
-                    });
-                });
             });
+            
+            output += '</div>';
+            
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = output;
+            resultsContainer.style.display = 'block';
+        })
+        .catch(error => console.error('Error:', error));
+});
         </script>
         
         
@@ -415,3 +378,13 @@ h6 {
 	
 </body> 
 </html>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKRXXLJQ6D');
+</script>
