@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 
+	<title>Help page.</title>
+	<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/FzFP1V98/CL3.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background-color: #222;
+			color: #fff;
+			text-align: left;
+			justify-content: center;
+		}
+		header, main {
+			
+			align-items: left;
+			padding: 20px;
+		}
+		main {
+			flex: 1;
+			animation: fadeIn 2s forwards;
+		}
+
+		@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		
+		
+		
+		a{
+			color: rgb(138, 255, 220);}
+			
+		footer {
+			background-color: rgb(0, 51, 44);
+			color: rgb(255, 255, 255);
+			padding: 20px;
+			text-align: center;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+		nav {
+			background-color: #f2f2f2;
+			overflow: hidden;
+		}
+		nav a {
+			float: left;
+			color: #333;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		
+		}
+		nav a:hover {
+			background-color: #ddd;
+		}
+
+		@media (max-width: 768px) {
+			.assistant-option {
+				flex-basis: 80%;
+			}
+		}
+
+
+		.assistant-option {
+			background-color: #444;
+			padding: 20px;
+			margin: 10px;
+			min-width: 200px;
+			min-height: 100px;
+			border-radius: 10px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			flex-basis: 40%;
+			max-width: 225px;
+			
+			
+		}
+		.assistant-option:hover {
+			background-color: rgb(52, 60, 61);
+			transform: scale(1.1);
+		}
+		.assistant-option h2 {
+			margin-top: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.assistant-option p {
+			margin-bottom: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.selector {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			border-width: 2px;
+			border-color: #ddd;
+			border-radius: 10px;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: thin;
+			&::-webkit-scrollbar {
+				
+			}
+		}
+		.assistant-option {
+			flex-shrink: 0;
+		}
+
+.video-div {
+    margin: 20px;
+    width: 500px;
+    background-color: rgb(0, 51, 44);
+    padding: 10px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.video-grid{
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(510px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (orientation: portrait) {
+    .video-div {
+        margin: 5px;
+        width: 100%;
+    }
+}
+
+p {
+    margin: 5px;
+    padding: 15px;
+}
+
+
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 112, 97);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 51, 44); 
+}
+
+li {
+
+    margin: 10px;
+}
+	</style>
+
+</head>
+<body>
+    <nav>
+		<a href="../index.html">Overview</a>
+		<a href="../chat.html">Chat</a>
+		<a href="../docs.html">Docs</a>
+	
+	</nav>
+	<main>
+        
+        <h2> Help & FAQ</h2>
+
+        <ol>
+            <li>How do I use the chat?</li>
+            <p>You can visit <a href="../professional.html">Milo-professional</a>, it's our latest release and most updated version of the AI avaible.</p>
+            <li>How do I get the best results from the AI?</li>
+            <p>Firstly, it is recomended to use English, as it gives the best results. Secondly, format clear, concise request, that do not use convoluted sentences. (unreasonably long and difficult to understand), Also, the more details you give it, higher quality response you get.</p>
+            <li>How fast is the AI?</li>
+            <p> On benchmarks, it has a writing speed of around 14,220 words per minute. (for reference, GPT-4o has around 781, while a regular human averages about 30-40.). But there may somethimes be a delay if there a large number of concurent users.</p>
+            <li>How many characters can I input in the chat?</li>
+            <p>In theory, about 300.000 but in reality, the number of characters you can input is a lot smaller.</p>
+            <li>Is there a limit?</li>
+            <p>No there is not a limit, but please don't abuse the service.</p>
+            
+          
+        </ol>
+        
+<p>Have any questions? Send an email at <a href="mailto:convolite@europe.com">convolite@europe.com</a></p>
+<p style="margin-left:1.25rem;">&nbsp;</p>
+
+		</main>
+		
+	<footer>
+        <a href="../docs.html" class="full-width-button"> See other articles </a>
+	</footer>
+	
+
+
+	
+
+	
+</body> 
+</html>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRXXLJQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKRXXLJQ6D');
+</script>

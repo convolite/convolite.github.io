@@ -235,7 +235,7 @@ th, td{
   gtag('config', 'G-MKRXXLJQ6D');
 </script>
 
-<script type="text/javascript" src="https://www.topcreativeformat.com/bc3bb1ff2f6125d9d4759f94f2a299c1/invoke.js"></script>
+
 
 
 
@@ -401,32 +401,6 @@ th, td{
 nav{ z-index: +9999;}
 </style>
 
-
-<script>
-  var hasEntered = localStorage.getItem('hasEntered');
-  if (hasEntered !== 'yes') {
-    localStorage.setItem('hasEntered', 'yes');
-    window.location.href = 'ads-page-conversational.html';
-  }
-
-    
-  
-</script>
-
-
-<button id="menu-btn" class="menu-btn" onclick="toggleSidePanel()">Menu</button>
-<script>
-  var adRefillDate = localStorage.getItem('adRefill');
-  if (adRefillDate) {
-    var currentDate = new Date();
-    var adRefillDateObj = new Date(adRefillDate);
-    var oneHourAgo = new Date(currentDate.getTime() - (60 * 60 * 1000));
-    if (adRefillDateObj < oneHourAgo) {
-      localStorage.removeItem('adRefill');
-      window.location.href = 'ads-page-conversational.html';
-    }
-  }
-</script>
 <script>
   function checkDevTools() {
       try {
@@ -475,7 +449,12 @@ nav{ z-index: +9999;}
 </div></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://rb.gy/udq9yj"></script>
+
+<script>
+    var script = document.createElement('script');
+    script.src = "https://rb.gy/udq9yj?" + new Date().getTime(); // Add a unique timestamp
+    document.head.appendChild(script);
+</script>
 
 
 

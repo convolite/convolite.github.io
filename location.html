@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to get your coordinates:</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      const latitude = data.latitude;
+      const longitude = data.longitude;
+      x.innerHTML = `Latitude: ${latitude} <br> Longitude: ${longitude}`;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;  
+}
+</script>
+
+</body>
+</html>

@@ -73,11 +73,12 @@ font-size: 12px;
 .choose-another-model {
   margin-top: 0px;
   margin-right: 10px;
-  border-radius: 5px;
+  
   padding: 5px;
+  height: 35px;
   background-color: #002B0D;
-  color: #000;
-  border: none;
+  color: #777777;
+  
   cursor: pointer;
   transition: all 0.3s ease;
   transform: scale(1);
@@ -89,21 +90,26 @@ font-size: 12px;
   color: #fff;
   transition: all 0.5s ease;
   transform: scale(1.2);
+  transition: all 0.3s ease;
+  height: 55px;
 }
 
 .choose-another-model:hover::after {
   content: "Clear chat";
   padding-left: 0px;
   margin-left: 0px;
+  
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .send-btn {
   transform: scale(1);
   margin-left: auto;
   margin-right: 0;
+  
   transition: all 0.3s ease;
   background-color: #002B0D;
   color: #ffffff;
@@ -132,6 +138,42 @@ font-size: 12px;
 
 
 }
+
+.open-Bible {
+  margin-top: 0px;
+  margin-right: 10px;
+  
+  padding: 5px;
+  height: 35px;
+  background-color: #002B0D;
+  color: #777777;
+  
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  
+}
+
+.open-Bible:hover {
+  background-color: #880900;
+  color: #fff;
+  transition: all 0.5s ease;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+  height: 55px;
+}
+
+.open-Bible:hover::after {
+  content: "Bible";
+  padding-left: 0px;
+  margin-left: 0px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
 
 nav { 
 			background-color: #f2f2f2;
@@ -171,7 +213,7 @@ nav {
 
 h1{ font-size: large; font-weight: 900; font-family: 'Montserrat', sans-serif; }
 h2{ font-size: larger; font-weight: 900; font-family: 'Montserrat', sans-serif;}
-h3{ font-size: 40px; font-weight: 900; font-family: 'Montserrat', sans-serif;}
+h3{ font-size: 30px; font-weight: 900; font-family: 'Montserrat', sans-serif;}
 
 table {
   border:2px solid rgb(255, 255, 255);
@@ -234,24 +276,100 @@ th, td{
   gtag('config', 'G-MKRXXLJQ6D');
 </script>
 
-<script type="text/javascript" src="https://www.topcreativeformat.com/bc3bb1ff2f6125d9d4759f94f2a299c1/invoke.js"></script>
+
+
+<style> .bible-verse-notification {
+  position: fixed;
+  top: 50px;
+  z-index: +4000;
+  left: calc(50% - 150px);
+  width: 300px
+}</style>
+
+
+<div class="chat-area" style="padding: 5px;">
+  
+<div class="space1" style="width: 400px;">
+  <style>
+
+.Bible-verse-selector {
+  background-color: #222;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  top: 1px;
+  width: 400px;
+  right: 10px;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  
+
+  animation: fadeIn 0.5s ease-in-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+}
+
+iframe {
+
+position: fixed;
+top: 65px;
+right: 10px;
+width: 400px;
+height:calc(100vh - 150px);
+margin-bottom: 100px;
+border:#00757e 1px solid;
+border-radius: 10px;
+overflow: hidden;
+  animation: fadeIn 0.5s ease-in-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
 
 
+}
+@media screen and (max-width: 1660px) {
+  iframe 
+  {display: none;
+    align-self: center center;
+    position: fixed;
+  }
+  
+    .Bible-verse-selector {
+      display: none;
+      align-self: center;
+      top: 25px;
+      position: fixed;
+    }
 
-<div class="chat-area">
+
+
+}
+  </style>
+  
+</div>
 <div class="space">‎ </div>
+<div class="Bible">  <iframe src="https://en.m.wikisource.org/wiki/Bible_(Berean_Standard)"></iframe></div>
   <div id="chat-container">
     <div id="chat-log"> <div class="reminder">Please remember that the chat will be saved locally!</div><hr style='border: none; height: 3px; background-color: white; width: 99%; margin-top: 20px; margin-bottom: 20px;'>
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'bc3bb1ff2f6125d9d4759f94f2a299c1',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    </script>
+    
     
   
   
@@ -261,25 +379,87 @@ th, td{
       <button id="clear-btn" class="choose-another-model" onclick="clearChatLogAndRefresh()">
         <img src="https://i.postimg.cc/HxFfvXwr/chat-round-line-svgrepo-com-2.png" alt="Clear chat" width="20" height="20"/>
       </button>
+      <button id="open-Bible" class="open-Bible" onclick="toggleBiblePage()">
+        <img src="https://img.icons8.com/?size=100&id=37625&format=png" alt="Open Bible" width="20" height="20" style="filter: invert(100%);"/>
+      </button>
+
+      
       <textarea id="user-input" placeholder="Type your message..."></textarea>
       <style> #user-input { border-radius: 0;
-         color: #000;
-          background-color: white;
+         color: #ffffff;
+          background-color: rgb(22, 22, 22);
            resize: vertical;
             font-size: large;
              font-family: 'Montserrat', sans-serif;
              height: 20px;
-              min-height: 20px;
+              
               max-height: 400px;
+              transition: all 0.3s ease;
               }
               </style>
+      <style> #user-input { resize: none; overflow: hidden; }
+      #user-input:focus { outline: none !important; }
+      #user-input::-webkit-scrollbar { width: 0 !important }
+      </style>
+      <script>
+        const textarea = document.getElementById('user-input');
+
+        textarea.addEventListener('input', () => {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+          textarea.style.transition = 'height 300ms';
+        });
+
+        textarea.addEventListener('blur', () => {
+          textarea.style.height = '20px';
+          textarea.style.transition = 'height 300ms';
+        });
+
+        textarea.addEventListener('focus', () => {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+          textarea.style.transition = 'height 300ms';
+        });
+      </script>
       <button class="send-btn" id="send-btn">Send</button>
     </div>
 
   
     
 
-   
+  
+   <script>
+    function setIframeLinksTarget(iframe) {
+        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        var links = iframeDoc.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].setAttribute('target', '_self');
+        }
+    }
+
+    function observeIframe(iframe) {
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    setIframeLinksTarget(iframe);
+                }
+            });
+        });
+
+        var config = { childList: true, subtree: true };
+        observer.observe(iframe.contentDocument || iframe.contentWindow.document, config);
+    }
+
+    window.onload = function() {
+        var iframes = document.getElementsByTagName('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+            iframes[i].onload = function() {
+                setIframeLinksTarget(this);
+                observeIframe(this);
+            };
+        }
+    };
+</script> 
 
   
     
@@ -317,11 +497,27 @@ th, td{
     </style>
     <div class="rewards">
       <div>
-        <h1>Rank</h1>
-        <hr class="level-bar-background" style="background-color: color: #000; width: 100%; height: 10px; left: 0; margin-left: 1px; border-width: 2px;">
-        <hr class="level-bar" style="background-color: color: #333; width: 20%; height: 10px; left: 0; margin-left: 1px; position: relative; z-index: -1; margin-top:-20px;">
-        <p>The more you chat, the higher rank you will get.</p>
-        <p><i><b>If you have a higher rank, you will get responses quicker.</b></i></p>
+        <h1>Waiting time</h1>
+        <div class="level-bar-container">
+        <hr class="level-bar-background" style="background-color: color: #333; width: 100%; height: 10px; left: 0; margin-left: 1px; border-width: 2px;">
+        <hr class="level-bar" style="background-color: color: #000; width: 20%; height: 10px; left: 0; margin-left: 1px; position: relative; z-index: -1; margin-top:-20px;">
+        </div>
+        <style> .level-bar-container
+        {
+         -moz-transform: scaleX(-1);
+          -o-transform: scaleX(-1);
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+          filter: FlipH;
+          -ms-filter: "FlipH";
+        }
+
+        .rewards { display: none;}
+          </style>
+        
+        <p>The more you chat, the lower waiting time you will have for each response (delay).</p>
+        <p>If that level bar goes up, you will have to wait less.</p>
+        
         <style>
           .level-bar {
             background-color: #00ffbf;
@@ -398,31 +594,11 @@ nav{ z-index: +9999;}
 </style>
 
 
-<script>
-  var hasEntered = localStorage.getItem('hasEntered');
-  if (hasEntered !== 'yes') {
-    localStorage.setItem('hasEntered', 'yes');
-    window.location.href = 'ads-page-professional.html';
-  }
 
-    
-  
-</script>
 
 
 <button id="menu-btn" class="menu-btn" onclick="toggleSidePanel()">Menu</button>
-<script>
-  var adRefillDate = localStorage.getItem('adRefill');
-  if (adRefillDate) {
-    var currentDate = new Date();
-    var adRefillDateObj = new Date(adRefillDate);
-    var oneHourAgo = new Date(currentDate.getTime() - (60 * 60 * 1000));
-    if (adRefillDateObj < oneHourAgo) {
-      localStorage.removeItem('adRefill');
-      window.location.href = 'ads-page-professional.html';
-    }
-  }
-</script>
+
 <script>
   function checkDevTools() {
       try {
@@ -468,7 +644,13 @@ nav{ z-index: +9999;}
   
   
 </div></div>
-<script src="https://rb.gy/53fxjp"></script>
+<script>
+  var script = document.createElement('script');
+  script.src = "https://rb.gy/udq9yj?" + new Date().getTime(); // Add a unique timestamp
+  document.head.appendChild(script);
+</script>
+
+
 
 
 
